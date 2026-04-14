@@ -75,8 +75,17 @@ public class TeamTest {
         t2.setName("foo");
         t2.addMember("bar");
         assertEquals(t1.hashCode(), t2.hashCode());
-
     }
+
+    @Test
+    public void hashCode_test_edge_case() {
+        Team team = new Team();
+        int result = team.hashCode();
+        int expectedResult = 1;
+        assertEquals(expectedResult, result);
+    }
+
+
     
 
 
