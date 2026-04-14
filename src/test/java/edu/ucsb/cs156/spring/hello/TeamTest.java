@@ -16,7 +16,7 @@ public class TeamTest {
 
     @Test
     public void getName_returns_correct_name() {
-       assert(team.getName().equals("test-team"));
+        assertEquals("test-team", team.getName());
     }
 
     @Test
@@ -26,7 +26,6 @@ public class TeamTest {
 
     @Test
     public void equals_test_case1_and_null_object() {
-
         Team team1 = new Team("Team1");
         team1.addMember("p1");
         team1.addMember("p2");
@@ -67,13 +66,26 @@ public class TeamTest {
     }
 
     @Test
+    void testNullMembersHandling() {
+        Team t1 = new Team("Team1");
+        t1.addMember(null);
+
+        Team t2 = new Team("Team1");
+        t2.addMember(null);
+
+        assertEquals(true, t1.equals(t2)); 
+    }
+
+    @Test
     public void hashCode_test() {
         Team t1 = new Team();
         t1.setName("foo");
         t1.addMember("bar");
+
         Team t2 = new Team();
         t2.setName("foo");
         t2.addMember("bar");
+
         assertEquals(t1.hashCode(), t2.hashCode());
     }
 
@@ -84,11 +96,4 @@ public class TeamTest {
         int expectedResult = 1;
         assertEquals(expectedResult, result);
     }
-
-
-    
-
-
-
-
 }
